@@ -1,14 +1,14 @@
 import React from 'react';
 
-function SmurfList() {
+
+
+function SmurfAdd() {
 
   return (
     <>
-    
+
     </>
   )
-
 }
 
-
-export default SmurfList;
+export default SmurfAdd;
