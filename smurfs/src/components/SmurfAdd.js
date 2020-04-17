@@ -1,11 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
+import { postSmurf } from '../store/smurfActions';
 
-function SmurfAdd() {
+function SmurfAdd(props) {
+
+  function addSmurf(e) {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    // console.log({data})
+    props.postSmurf(data)
+  }
 
   return (
     <>
-      <form className='add-item-form' onSubmit={(e) => {e.preventDefault()} }>
+      <form className='add-item-form' onSubmit={addSmurf}>
         <label className='form-item'>Name 
           <input name='name' type='text' />
         </label>
@@ -21,4 +30,10 @@ function SmurfAdd() {
   )
 }
 
-export default SmurfAdd;
+function mapToProps() {
+  return {} 
+}
+
+export default connect(mapToProps, {
+  postSmurf
+})(SmurfAdd);
