@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { getSmurfs, deleteSmurf } from '../store/smurfActions';
 
 import SmurfItem from './SmurfItem';
+import Loader from 'react-loader-spinner'
 
 function SmurfList(props) {
 
@@ -14,7 +15,18 @@ function SmurfList(props) {
 
   return (
     <div className='smurf-list'>
-      {props.smurfs.map(item => {
+      {props.isFetching && (
+        <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000} //3 secs
+  
+        />
+      )}
+
+      {props.smurfs && props.smurfs.map(item => {
         return <SmurfItem
           key={item.id} 
           smurf={item} 
