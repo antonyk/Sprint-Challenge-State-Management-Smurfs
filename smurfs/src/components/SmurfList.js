@@ -15,7 +15,10 @@ function SmurfList(props) {
   return (
     <div className='smurf-list'>
       {props.smurfs.map(item => {
-        return <SmurfItem key={item.id} smurf={item} delete={() => deleteSmurf(item.id)} />
+        return <SmurfItem
+          key={item.id} 
+          smurf={item} 
+          delete={() => props.deleteSmurf(item.id)} />
       })}
     </div>
   )
