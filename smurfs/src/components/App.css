@@ -24,3 +24,17 @@
   width: 50%;
   max-width: 200px;
 }
+
+.smurf-list {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.smurf-item {
+  margin: 12px 0;
+  padding: 8px 8px;
+  width: 300px;
+  border: 1px gainsboro solid;
+}

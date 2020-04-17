@@ -1,24 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 
-import { getSmurfs } from '../store/smurfActions';
+import { getSmurfs, deleteSmurf } from '../store/smurfActions';
 
-function SmurfList() {
+import SmurfItem from './SmurfItem';
+
+function SmurfList(props) {
+
+  useEffect(() => {
+    props.getSmurfs();
+
+  },[])
 
   return (
-    <>
-
-    </>
+    <div className='smurf-list'>
+      {props.smurfs.map(item => {
+        return <SmurfItem key={item.id} smurf={item} delete={() => deleteSmurf(item.id)} />
+      })}
+    </div>
   )
 
 }
 
 function mapToProps(state) {
   return {
-
+    isFetching: state.isFetching,
+    smurfs: state.smurfs,
   }
 }
 
 export default connect(mapToProps, {
-  getSmurfs
+  getSmurfs,
+  deleteSmurf,
 })(SmurfList);
